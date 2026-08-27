@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Shira — Cartography &amp; GIS</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<nav>
+  <div class="wrap">
+    <div class="brand">Shira</div>
+    <div class="nav-links">
+      <a href="index.html" class="active">Work</a>
+      <a href="about.html">About</a>
+    </div>
+  </div>
+</nav>
+
+<div class="wrap">
+  <div class="grid" id="grid"></div>
+</div>
+
+<div class="lightbox" id="lightbox">
+  <span class="lightbox-close" id="lightbox-close">&times;</span>
+  <img id="lightbox-img" src="" alt="">
+  <div class="lightbox-caption" id="lightbox-caption"></div>
+</div>
+
+<script>
+  // ---- Add your projects here ----
+  // image: path to the file (e.g. "images/dalton.jpg")
+  // title: shown on hover and in the lightbox caption
+  const projects = [
+    { image: "images/project-01.jpg", title: "Sea-to-Plate StoryMap" },
+    { image: "images/project-02.jpg", title: "Regional Food Business Dashboard" },
+    { image: "images/project-03.jpg", title: "Dalton Highway, in Scale" },
+    { image: "images/project-04.jpg", title: "Search & Rescue GIS Hub" },
+    { image: "images/project-05.jpg", title: "Add your next map" },
+    { image: "images/project-06.jpg", title: "Add your next map" }
+  ];
+
+  const grid = document.getElementById('grid');
+  const lightbox = document.getElementById('lightbox');
+  const lightboxImg = document.getElementById('lightbox-img');
+  const lightboxCaption = document.getElementById('lightbox-caption');
+
+  projects.forEach(p => {
+    const tile = document.createElement('div');
+    tile.className = 'tile';
+    tile.innerHTML = `
+      <img src="${p.image}" alt="${p.title}">
+      <div class="tile-overlay">
+        <div class="tile-title">${p.title}</div>
+      </div>
+    `;
+    tile.addEventListener('click', () => {
+      lightboxImg.src = p.image;
+      lightboxImg.alt = p.title;
+      lightboxCaption.textContent = p.title;
+      lightbox.classList.add('open');
+    });
+    grid.appendChild(tile);
+  });
+
+  function closeLightbox(){ lightbox.classList.remove('open'); }
+  document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
+  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+</script>
+
+</body>
+</html>
