@@ -28,6 +28,8 @@ import shutil
 from pathlib import Path
 from PIL import Image, ImageOps
 
+Image.MAX_IMAGE_PIXELS = None  # allow large GIS exports (e.g. big GeoTIFF/JPEG renders)
+
 # ---- SETTINGS (edit these if you want) ----
 SOURCE_FOLDER = Path(r"C:\Users\saellenson\OneDrive - Dewberry\Misc\Portfolio")
 OUTPUT_FOLDER = SOURCE_FOLDER / "resized"
