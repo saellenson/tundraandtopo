@@ -28,7 +28,11 @@
 
 <div class="lightbox" id="lightbox">
   <span class="lightbox-close" id="lightbox-close">&times;</span>
+  <span class="lightbox-arrow prev" id="lightbox-prev">&#8249;</span>
+  <span class="lightbox-arrow next" id="lightbox-next">&#8250;</span>
+  <div class="lightbox-award" id="lightbox-award"></div>
   <div id="lightbox-media"></div>
+  <div class="lightbox-lens" id="lightbox-lens"></div>
   <div class="lightbox-caption" id="lightbox-caption"></div>
 </div>
 
@@ -53,50 +57,111 @@
 
     // ---- Line 2 ----
     { type: "image", thumb: "images/full/hurricane-helene-storm-surge-levels-in-madeira-beach-fl.gif", full: "images/full/hurricane-helene-storm-surge-levels-in-madeira-beach-fl.gif", title: "Hurricane Helene Storm Surge Levels in Madeira Beach, FL" },
-    { type: "video", thumb: "images/full/honey-bee-animation.mp4", full: "images/full/honey-bee-animation.mp4", title: "Honey Bee Animation" },
-    { type: "image", thumb: "images/thumbs/40-mile-river-ak.jpg", full: "images/full/40-mile-river-ak.jpg", title: "40 Mile River, AK" },
-    { type: "image", thumb: "images/thumbs/addressing-in-sand-point-ak.jpg", full: "images/full/addressing-in-sand-point-ak.jpg", title: "Addressing in Sand Point, AK", award: true },
+    { type: "video", thumb: "images/full/honey-bee-colonies-animation.mp4", full: "images/full/honey-bee-colonies-animation.mp4", title: "Honey Bee Animation" },
+    { type: "image", thumb: "images/thumbs/wadi-rum-jordan.jpg", full: "images/full/wadi-rum-jordan.jpg", title: "Wadi Rum, Jordan", award: true, zoomThumb: "lg" },
+    { type: "image", thumb: "images/thumbs/yukon-rem.jpg", full: "images/full/yukon-rem.jpg", title: "Yukon REM" },
 
     // ---- Remaining projects ----
+    { type: "image", thumb: "images/thumbs/addressing-in-sand-point-ak.jpg", full: "images/full/addressing-in-sand-point-ak.jpg", title: "Addressing in Sand Point, AK", award: true },
+    { type: "image", thumb: "images/thumbs/jewish-movement-in-the-16th-century.jpg", full: "images/full/jewish-movement-in-the-16th-century.jpg", title: "Jewish Movement in the 16th Century" },
     { type: "image", thumb: "images/thumbs/alaska-coastal-communities.jpg", full: "images/full/alaska-coastal-communities.jpg", title: "Alaska Coastal Communities" },
+    { type: "image", thumb: "images/thumbs/40-mile-river-ak.jpg", full: "images/full/40-mile-river-ak.jpg", title: "40 Mile River, AK" },
     { type: "image", thumb: "images/thumbs/anchorage-neighborhoods.jpg", full: "images/full/anchorage-neighborhoods.jpg", title: "Anchorage Neighborhoods" },
-    { type: "image", thumb: "images/thumbs/aurora-forecast.jpg", full: "images/full/aurora-forecast.jpg", title: "Aurora Forecast" },
+    { type: "image", thumb: "images/thumbs/aurora-forescast.jpg", full: "images/full/aurora-forescast.jpg", title: "Aurora Forecast" },
     { type: "image", thumb: "images/thumbs/calista-region-ak.jpg", full: "images/full/calista-region-ak.jpg", title: "Calista Region, AK" },
     { type: "image", thumb: "images/thumbs/donut-miss-this.jpg", full: "images/full/donut-miss-this.jpg", title: "Donut Miss This!" },
     { type: "image", thumb: "images/thumbs/front-range-chugach-ak.jpg", full: "images/full/front-range-chugach-ak.jpg", title: "Front Range Chugach, AK" },
-    { type: "image", thumb: "images/thumbs/huslia-river-watershed.jpg", full: "images/full/huslia-river-watershed.jpg", title: "Huslia River Watershed" },
-    { type: "image", thumb: "images/thumbs/jewish-movement-in-the-16th-century.jpg", full: "images/full/jewish-movement-in-the-16th-century.jpg", title: "Jewish Movement in the 16th Century" },
-    { type: "image", thumb: "images/thumbs/klondike-gold-rush-national-historic-park-ak.jpg", full: "images/full/klondike-gold-rush-national-historic-park-ak.jpg", title: "Klondike Gold Rush National Historic Park, AK", rotate: -90 },
     { type: "image", thumb: "images/thumbs/map-projections.jpg", full: "images/full/map-projections.jpg", title: "Map Projections" },
+    { type: "image", thumb: "images/thumbs/klondike-gold-rush-national-historic-park-ak.jpg", full: "images/full/klondike-gold-rush-national-historic-park-ak.jpg", title: "Klondike Gold Rush National Historic Park, AK", rotate: -90 },
     { type: "image", thumb: "images/thumbs/marsh-island-la.jpg", full: "images/full/marsh-island-la.jpg", title: "Marsh Island, LA" },
     { type: "image", thumb: "images/thumbs/mat-su-borough-land-use-change.jpg", full: "images/full/mat-su-borough-land-use-change.jpg", title: "Mat Su Borough Land Use Change" },
-    { type: "image", thumb: "images/thumbs/metrolink-subdivisions.jpg", full: "images/full/metrolink-subdivisions.jpg", title: "Metrolink Subdivisions" },
-    { type: "image", thumb: "images/thumbs/sheridan-glacier-ak.jpg", full: "images/full/sheridan-glacier-ak.jpg", title: "Sheridan Glacier, AK" },
-    { type: "image", thumb: "images/thumbs/wadi-rum-jordan.jpg", full: "images/full/wadi-rum-jordan.jpg", title: "Wadi Rum, Jordan", award: true },
-    { type: "image", thumb: "images/thumbs/yukon-rem.jpg", full: "images/full/yukon-rem.jpg", title: "Yukon REM" }
+    { type: "image", thumb: "images/thumbs/metrolink-subdivisions.jpg", full: "images/full/metrolink-subdivisions.jpg", title: "Metrolink Subdivisions", zoomThumb: true },
+    { type: "image", thumb: "images/thumbs/huslia-river-watershed.jpg", full: "images/full/huslia-river-watershed.jpg", title: "Huslia River Watershed" },
+    { type: "image", thumb: "images/thumbs/sheridan-glacier-ak.jpg", full: "images/full/sheridan-glacier-ak.jpg", title: "Sheridan Glacier, AK" }
   ];
 
   // ---- Interactive Maps & Apps ----
   // type "link" opens the URL in a new tab instead of the lightbox
   const interactiveApps = [
-    { type: "link", thumb: "images/thumbs/alaska-geoportal-web-app.jpg", url: "https://akgeoportal.alaska.gov/", title: "Alaska Geoportal | Web App" },
-    { type: "link", thumb: "images/thumbs/skyhub-explorer-web-app.jpg", url: "https://skyhub.alaska.gov/", title: "SkyHub Explorer | Web App" },
-    { type: "link", thumb: "images/thumbs/usda-census-of-ag-dashboard.jpg", url: "https://maps.arcgis.com/apps/dashboards/dd11415d593a4609bf93526df0155431", title: "USDA Census of Ag Dashboard" },
-    { type: "link", thumb: "images/thumbs/alaska-food-policy-council-food-spoilage-dashboard.jpg", url: "https://maps.arcgis.com/apps/dashboards/b06e04e6196649ce9ab663a46526cb17", title: "Alaska Food Policy Council | Food Spoilage Dashboard" }
+    { type: "link", thumb: "images/full/alaska-geoportal-web-app.jpg", url: "https://akgeoportal.alaska.gov/", title: "Alaska Geoportal | Web App" },
+    { type: "link", thumb: "images/full/skyhub-explorer-web-app.jpg", url: "https://skyhub.alaska.gov/", title: "SkyHub Explorer | Web App" },
+    { type: "link", thumb: "images/full/usda-census-of-agriculture-dashboard.jpg", url: "https://maps.arcgis.com/apps/dashboards/dd11415d593a4609bf93526df0155431", title: "USDA Census of Ag Dashboard" },
+    { type: "link", thumb: "images/full/alaska-food-policy-council-food-spoilage-dashboard.jpg", url: "https://maps.arcgis.com/apps/dashboards/b06e04e6196649ce9ab663a46526cb17", title: "Alaska Food Policy Council | Food Spoilage Dashboard" }
   ];
 
   const lightbox = document.getElementById('lightbox');
   const lightboxMedia = document.getElementById('lightbox-media');
   const lightboxCaption = document.getElementById('lightbox-caption');
+  const lightboxPrev = document.getElementById('lightbox-prev');
+  const lightboxNext = document.getElementById('lightbox-next');
+  const lightboxAward = document.getElementById('lightbox-award');
+  const lightboxLens = document.getElementById('lightbox-lens');
 
-  function renderGrid(items, gridEl) {
-    items.forEach(p => {
+  const LENS_SIZE = 220;
+  const ZOOM = 2.4;
+
+  // Only the main grid is navigable with arrows — the app links open a new tab instead.
+  let currentIndex = -1;
+  let currentIsRotated = false;
+
+  function hideLens(){ lightboxLens.style.display = 'none'; }
+
+  function showItem(index) {
+    const p = projects[index];
+    currentIndex = index;
+    currentIsRotated = !!p.rotate;
+    hideLens();
+
+    if (p.type === 'video') {
+      lightboxMedia.innerHTML = `<video src="${p.full}" controls autoplay loop></video>`;
+    } else if (p.rotate) {
+      // Compute exact pixel dimensions so the rotated box fits the viewport correctly
+      // (CSS max-width/max-height can't account for a transform rotation on its own).
+      lightboxMedia.innerHTML = '';
+      const img = document.createElement('img');
+      img.src = p.full;
+      img.alt = p.title;
+      img.style.transform = `rotate(${p.rotate}deg)`;
+      img.addEventListener('load', () => {
+        const nw = img.naturalWidth, nh = img.naturalHeight;
+        const maxW = window.innerWidth * 0.82;
+        const maxH = window.innerHeight * 0.82;
+        // After a 90deg rotation, on-screen width/height swap relative to natural size.
+        const scale = Math.min(maxW / nh, maxH / nw);
+        img.style.width = (nw * scale) + 'px';
+        img.style.height = (nh * scale) + 'px';
+      });
+      lightboxMedia.appendChild(img);
+    } else {
+      lightboxMedia.innerHTML = `<img src="${p.full}" alt="${p.title}">`;
+    }
+    lightboxCaption.textContent = p.title;
+    lightboxAward.innerHTML = p.award ? `${AWARD_SVG}<span>Award Winner</span>` : '';
+  }
+
+  function openLightbox(index) {
+    showItem(index);
+    lightbox.classList.add('open');
+  }
+
+  function closeLightbox(){
+    lightbox.classList.remove('open');
+    lightboxMedia.innerHTML = ''; // stops video playback when closed
+    hideLens();
+  }
+
+  function showPrev(){ showItem((currentIndex - 1 + projects.length) % projects.length); }
+  function showNext(){ showItem((currentIndex + 1) % projects.length); }
+
+  function renderGrid(items, gridEl, navigable) {
+    items.forEach((p, i) => {
       const tile = document.createElement('div');
       tile.className = 'tile';
 
+      const zoomClass = p.zoomThumb === 'lg' ? ' zoom-thumb-lg' : (p.zoomThumb ? ' zoom-thumb' : '');
       const mediaTag = p.type === 'video'
         ? `<video src="${p.thumb}" autoplay muted loop playsinline></video>`
-        : `<img src="${p.thumb}" alt="${p.title}" loading="lazy">`;
+        : `<img src="${p.thumb}" alt="${p.title}" loading="lazy" class="${zoomClass}">`;
 
       const awardTag = p.award
         ? `<div class="tile-award">${AWARD_SVG}<span>Award Winner</span></div>`
@@ -115,31 +180,46 @@
           window.open(p.url, '_blank', 'noopener');
           return;
         }
-        if (p.type === 'video') {
-          lightboxMedia.innerHTML = `<video src="${p.full}" controls autoplay loop></video>`;
-        } else if (p.rotate) {
-          lightboxMedia.innerHTML = `<img src="${p.full}" alt="${p.title}" style="transform: rotate(${p.rotate}deg); max-width: 82vh; max-height: 82vw;">`;
-        } else {
-          lightboxMedia.innerHTML = `<img src="${p.full}" alt="${p.title}">`;
-        }
-        lightboxCaption.textContent = p.title;
-        lightbox.classList.add('open');
+        openLightbox(i);
       });
 
       gridEl.appendChild(tile);
     });
   }
 
-  renderGrid(projects, document.getElementById('grid'));
-  renderGrid(interactiveApps, document.getElementById('grid-apps'));
+  renderGrid(projects, document.getElementById('grid'), true);
+  renderGrid(interactiveApps, document.getElementById('grid-apps'), false);
 
-  function closeLightbox(){
-    lightbox.classList.remove('open');
-    lightboxMedia.innerHTML = ''; // stops video playback when closed
-  }
   document.getElementById('lightbox-close').addEventListener('click', closeLightbox);
+  lightboxPrev.addEventListener('click', (e) => { e.stopPropagation(); showPrev(); });
+  lightboxNext.addEventListener('click', (e) => { e.stopPropagation(); showNext(); });
   lightbox.addEventListener('click', (e) => { if (e.target === lightbox) closeLightbox(); });
-  document.addEventListener('keydown', (e) => { if (e.key === 'Escape') closeLightbox(); });
+  document.addEventListener('keydown', (e) => {
+    if (!lightbox.classList.contains('open')) return;
+    if (e.key === 'Escape') closeLightbox();
+    if (e.key === 'ArrowLeft') showPrev();
+    if (e.key === 'ArrowRight') showNext();
+  });
+
+  // Magnifier: hover a full-size (non-rotated) image to see a zoomed lens follow the cursor.
+  lightboxMedia.addEventListener('mousemove', (e) => {
+    const img = e.target.closest('img');
+    if (!img || currentIsRotated) { hideLens(); return; }
+
+    const rect = img.getBoundingClientRect();
+    const x = e.clientX - rect.left;
+    const y = e.clientY - rect.top;
+    if (x < 0 || y < 0 || x > rect.width || y > rect.height) { hideLens(); return; }
+
+    lightboxLens.style.display = 'block';
+    lightboxLens.style.left = (e.clientX - LENS_SIZE / 2) + 'px';
+    lightboxLens.style.top = (e.clientY - LENS_SIZE / 2) + 'px';
+    lightboxLens.style.backgroundImage = `url(${img.src})`;
+    lightboxLens.style.backgroundSize = `${rect.width * ZOOM}px ${rect.height * ZOOM}px`;
+    lightboxLens.style.backgroundPosition =
+      `-${x * ZOOM - LENS_SIZE / 2}px -${y * ZOOM - LENS_SIZE / 2}px`;
+  });
+  lightboxMedia.addEventListener('mouseleave', hideLens);
 </script>
 
 </body>
