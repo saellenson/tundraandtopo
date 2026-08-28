@@ -11,6 +11,11 @@ grid plays them directly) rather than resized — resizing would break their ani
 All filenames are slugified (lowercase, hyphens, no spaces/punctuation) so they work
 cleanly as URLs on the website, e.g. "40 Mile River, AK.jpg" -> "40-mile-river-ak.jpg"
 
+Photos are auto-corrected for EXIF rotation (fixes phone photos that come out
+sideways/upside-down after resizing — this is what was happening to Klondike).
+One extra manual rotation is applied on top of that for Klondike specifically,
+to convert it from landscape to portrait — see ROTATE_OVERRIDES below.
+
 HOW TO RUN:
 1. Install Pillow if you don't have it:  pip install Pillow
 2. Run:  python resize_portfolio_images.py
@@ -21,7 +26,7 @@ HOW TO RUN:
 import re
 import shutil
 from pathlib import Path
-from PIL import Image
+from PIL import Image, ImageOps
 
 # ---- SETTINGS (edit these if you want) ----
 SOURCE_FOLDER = Path(r"C:\Users\saellenson\OneDrive - Dewberry\Misc\Portfolio")
@@ -35,6 +40,13 @@ FULL_QUALITY = 90
 
 IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".tif", ".tiff", ".bmp"}
 COPY_ONLY_EXTENSIONS = {".mp4", ".gif"}  # not resized — just slugified + copied
+
+# Manual rotation on top of auto EXIF correction, keyed by exact source filename.
+# Degrees rotate counter-clockwise. If a photo comes out sideways the wrong way,
+# just flip the sign (90 -> -90) and re-run.
+ROTATE_OVERRIDES = {
+    "Klondike Gold Rush National Historic Park, AK.jpg": 90,
+}
 
 
 def slugify(name: str) -> str:
@@ -74,7 +86,12 @@ def main():
     for file in image_files:
         try:
             with Image.open(file) as img:
+                img = ImageOps.exif_transpose(img)  # auto-fix phone-photo rotation
                 img = img.convert("RGB")
+
+                if file.name in ROTATE_OVERRIDES:
+                    img = img.rotate(ROTATE_OVERRIDES[file.name], expand=True)
+
                 slug = slugify(file.stem) + ".jpg"
 
                 thumb_size, thumb_mb = save_version(
