@@ -42,11 +42,10 @@ IMAGE_EXTENSIONS = {".jpg", ".jpeg", ".png", ".tif", ".tiff", ".bmp"}
 COPY_ONLY_EXTENSIONS = {".mp4", ".gif"}  # not resized — just slugified + copied
 
 # Manual rotation on top of auto EXIF correction, keyed by exact source filename.
-# Degrees rotate counter-clockwise. If a photo comes out sideways the wrong way,
-# just flip the sign (90 -> -90) and re-run.
-ROTATE_OVERRIDES = {
-    "Klondike Gold Rush National Historic Park, AK.jpg": 90,
-}
+# Klondike's rotation is now handled in index.html (CSS, lightbox-only) instead of
+# here, so the grid thumbnail stays unrotated. Add entries here only if you want a
+# photo rotated in BOTH the thumbnail and the full-size file.
+ROTATE_OVERRIDES = {}
 
 
 def slugify(name: str) -> str:

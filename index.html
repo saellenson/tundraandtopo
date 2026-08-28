@@ -10,7 +10,7 @@
 
 <nav>
   <div class="wrap">
-    <div class="brand">Shira Ellenson</div>
+    <div class="brand brand-lg">Shira Ellenson</div>
     <div class="nav-links">
       <a href="index.html" class="active">Work</a>
       <span class="nav-sep">|</span>
@@ -21,6 +21,9 @@
 
 <div class="wrap">
   <div class="grid" id="grid"></div>
+
+  <div class="section-heading">Interactive Maps &amp; Apps</div>
+  <div class="grid grid-tight" id="grid-apps"></div>
 </div>
 
 <div class="lightbox" id="lightbox">
@@ -37,10 +40,10 @@
     <path d="M9.5 8.5L11 10l3.5-3.5" stroke="#C9A227" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
   </svg>`;
 
-  // ---- Project list ----
-  // type: "image" (default), "video" (autoplays in grid, opens with controls),
-  //       or "link" (click goes to an external URL instead of the lightbox)
+  // ---- Main grid ----
+  // type: "image" (default) or "video" (autoplays in grid, opens with controls)
   // award: true adds the "Award Winner" badge on hover
+  // rotate: degrees to rotate ONLY in the lightbox view (grid thumbnail stays as-is)
   const projects = [
     // ---- Line 1 ----
     { type: "image", thumb: "images/thumbs/tracking-the-buzz-20-year-of-honey-bees.jpg", full: "images/full/tracking-the-buzz-20-year-of-honey-bees.jpg", title: "Tracking the Buzz - 20 Years of Honey Bees", award: true },
@@ -49,16 +52,13 @@
     { type: "image", thumb: "images/thumbs/craters-of-the-moon.jpg", full: "images/full/craters-of-the-moon.jpg", title: "Craters of the Moon" },
 
     // ---- Line 2 ----
-    { type: "link", thumb: "images/thumbs/skyhub-explorer-web-app.jpg", url: "https://skyhub.alaska.gov/", title: "SkyHub Explorer | Web App" },
-    { type: "link", thumb: "images/thumbs/alaska-geoportal-web-app.jpg", url: "https://akgeoportal.alaska.gov/", title: "Alaska Geoportal | Web App" },
     { type: "image", thumb: "images/full/hurricane-helene-storm-surge-levels-in-madeira-beach-fl.gif", full: "images/full/hurricane-helene-storm-surge-levels-in-madeira-beach-fl.gif", title: "Hurricane Helene Storm Surge Levels in Madeira Beach, FL" },
     { type: "video", thumb: "images/full/honey-bee-animation.mp4", full: "images/full/honey-bee-animation.mp4", title: "Honey Bee Animation" },
-
-    // ---- Remaining projects ----
     { type: "image", thumb: "images/thumbs/40-mile-river-ak.jpg", full: "images/full/40-mile-river-ak.jpg", title: "40 Mile River, AK" },
     { type: "image", thumb: "images/thumbs/addressing-in-sand-point-ak.jpg", full: "images/full/addressing-in-sand-point-ak.jpg", title: "Addressing in Sand Point, AK", award: true },
+
+    // ---- Remaining projects ----
     { type: "image", thumb: "images/thumbs/alaska-coastal-communities.jpg", full: "images/full/alaska-coastal-communities.jpg", title: "Alaska Coastal Communities" },
-    { type: "link", thumb: "images/thumbs/alaska-food-policy-council-food-spoilage-dashboard.jpg", url: "https://maps.arcgis.com/apps/dashboards/b06e04e6196649ce9ab663a46526cb17", title: "Alaska Food Policy Council | Food Spoilage Dashboard" },
     { type: "image", thumb: "images/thumbs/anchorage-neighborhoods.jpg", full: "images/full/anchorage-neighborhoods.jpg", title: "Anchorage Neighborhoods" },
     { type: "image", thumb: "images/thumbs/aurora-forecast.jpg", full: "images/full/aurora-forecast.jpg", title: "Aurora Forecast" },
     { type: "image", thumb: "images/thumbs/calista-region-ak.jpg", full: "images/full/calista-region-ak.jpg", title: "Calista Region, AK" },
@@ -66,56 +66,72 @@
     { type: "image", thumb: "images/thumbs/front-range-chugach-ak.jpg", full: "images/full/front-range-chugach-ak.jpg", title: "Front Range Chugach, AK" },
     { type: "image", thumb: "images/thumbs/huslia-river-watershed.jpg", full: "images/full/huslia-river-watershed.jpg", title: "Huslia River Watershed" },
     { type: "image", thumb: "images/thumbs/jewish-movement-in-the-16th-century.jpg", full: "images/full/jewish-movement-in-the-16th-century.jpg", title: "Jewish Movement in the 16th Century" },
-    { type: "image", thumb: "images/thumbs/klondike-gold-rush-national-historic-park-ak.jpg", full: "images/full/klondike-gold-rush-national-historic-park-ak.jpg", title: "Klondike Gold Rush National Historic Park, AK" },
+    { type: "image", thumb: "images/thumbs/klondike-gold-rush-national-historic-park-ak.jpg", full: "images/full/klondike-gold-rush-national-historic-park-ak.jpg", title: "Klondike Gold Rush National Historic Park, AK", rotate: -90 },
     { type: "image", thumb: "images/thumbs/map-projections.jpg", full: "images/full/map-projections.jpg", title: "Map Projections" },
     { type: "image", thumb: "images/thumbs/marsh-island-la.jpg", full: "images/full/marsh-island-la.jpg", title: "Marsh Island, LA" },
     { type: "image", thumb: "images/thumbs/mat-su-borough-land-use-change.jpg", full: "images/full/mat-su-borough-land-use-change.jpg", title: "Mat Su Borough Land Use Change" },
     { type: "image", thumb: "images/thumbs/metrolink-subdivisions.jpg", full: "images/full/metrolink-subdivisions.jpg", title: "Metrolink Subdivisions" },
     { type: "image", thumb: "images/thumbs/sheridan-glacier-ak.jpg", full: "images/full/sheridan-glacier-ak.jpg", title: "Sheridan Glacier, AK" },
-    { type: "link", thumb: "images/thumbs/usda-census-of-ag-dashboard.jpg", url: "https://maps.arcgis.com/apps/dashboards/dd11415d593a4609bf93526df0155431", title: "USDA Census of Ag Dashboard" },
     { type: "image", thumb: "images/thumbs/wadi-rum-jordan.jpg", full: "images/full/wadi-rum-jordan.jpg", title: "Wadi Rum, Jordan", award: true },
     { type: "image", thumb: "images/thumbs/yukon-rem.jpg", full: "images/full/yukon-rem.jpg", title: "Yukon REM" }
   ];
 
-  const grid = document.getElementById('grid');
+  // ---- Interactive Maps & Apps ----
+  // type "link" opens the URL in a new tab instead of the lightbox
+  const interactiveApps = [
+    { type: "link", thumb: "images/thumbs/alaska-geoportal-web-app.jpg", url: "https://akgeoportal.alaska.gov/", title: "Alaska Geoportal | Web App" },
+    { type: "link", thumb: "images/thumbs/skyhub-explorer-web-app.jpg", url: "https://skyhub.alaska.gov/", title: "SkyHub Explorer | Web App" },
+    { type: "link", thumb: "images/thumbs/usda-census-of-ag-dashboard.jpg", url: "https://maps.arcgis.com/apps/dashboards/dd11415d593a4609bf93526df0155431", title: "USDA Census of Ag Dashboard" },
+    { type: "link", thumb: "images/thumbs/alaska-food-policy-council-food-spoilage-dashboard.jpg", url: "https://maps.arcgis.com/apps/dashboards/b06e04e6196649ce9ab663a46526cb17", title: "Alaska Food Policy Council | Food Spoilage Dashboard" }
+  ];
+
   const lightbox = document.getElementById('lightbox');
   const lightboxMedia = document.getElementById('lightbox-media');
   const lightboxCaption = document.getElementById('lightbox-caption');
 
-  projects.forEach(p => {
-    const tile = document.createElement('div');
-    tile.className = 'tile';
+  function renderGrid(items, gridEl) {
+    items.forEach(p => {
+      const tile = document.createElement('div');
+      tile.className = 'tile';
 
-    const mediaTag = p.type === 'video'
-      ? `<video src="${p.thumb}" autoplay muted loop playsinline></video>`
-      : `<img src="${p.thumb}" alt="${p.title}" loading="lazy">`;
+      const mediaTag = p.type === 'video'
+        ? `<video src="${p.thumb}" autoplay muted loop playsinline></video>`
+        : `<img src="${p.thumb}" alt="${p.title}" loading="lazy">`;
 
-    const awardTag = p.award
-      ? `<div class="tile-award">${AWARD_SVG}<span>Award Winner</span></div>`
-      : '';
+      const awardTag = p.award
+        ? `<div class="tile-award">${AWARD_SVG}<span>Award Winner</span></div>`
+        : '';
 
-    tile.innerHTML = `
-      ${mediaTag}
-      <div class="tile-overlay">
-        <div class="tile-title">${p.title}</div>
-      </div>
-      ${awardTag}
-    `;
+      tile.innerHTML = `
+        ${mediaTag}
+        <div class="tile-overlay">
+          <div class="tile-title">${p.title}</div>
+        </div>
+        ${awardTag}
+      `;
 
-    tile.addEventListener('click', () => {
-      if (p.type === 'link') {
-        window.open(p.url, '_blank', 'noopener');
-        return;
-      }
-      lightboxMedia.innerHTML = p.type === 'video'
-        ? `<video src="${p.full}" controls autoplay loop></video>`
-        : `<img src="${p.full}" alt="${p.title}">`;
-      lightboxCaption.textContent = p.title;
-      lightbox.classList.add('open');
+      tile.addEventListener('click', () => {
+        if (p.type === 'link') {
+          window.open(p.url, '_blank', 'noopener');
+          return;
+        }
+        if (p.type === 'video') {
+          lightboxMedia.innerHTML = `<video src="${p.full}" controls autoplay loop></video>`;
+        } else if (p.rotate) {
+          lightboxMedia.innerHTML = `<img src="${p.full}" alt="${p.title}" style="transform: rotate(${p.rotate}deg); max-width: 82vh; max-height: 82vw;">`;
+        } else {
+          lightboxMedia.innerHTML = `<img src="${p.full}" alt="${p.title}">`;
+        }
+        lightboxCaption.textContent = p.title;
+        lightbox.classList.add('open');
+      });
+
+      gridEl.appendChild(tile);
     });
+  }
 
-    grid.appendChild(tile);
-  });
+  renderGrid(projects, document.getElementById('grid'));
+  renderGrid(interactiveApps, document.getElementById('grid-apps'));
 
   function closeLightbox(){
     lightbox.classList.remove('open');
