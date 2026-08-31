@@ -22,7 +22,7 @@
 <div class="wrap">
   <div class="grid" id="grid"></div>
 
-  <div class="section-heading">Interactive Web Experiences</div>
+  <div class="section-heading">Interactive Maps &amp; Apps</div>
   <div class="grid grid-tight" id="grid-apps"></div>
 </div>
 
@@ -38,10 +38,8 @@
 
 <script>
   // Small award-ribbon icon, reused for any project with award: true
-  const AWARD_SVG = `<svg viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
-    <circle cx="12" cy="8" r="6" stroke="#C9A227" stroke-width="1.6"/>
-    <path d="M8.5 13.5L7 21l5-2.5L17 21l-1.5-7.5" stroke="#C9A227" stroke-width="1.6" stroke-linejoin="round"/>
-    <path d="M9.5 8.5L11 10l3.5-3.5" stroke="#C9A227" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/>
+  const AWARD_SVG = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2.5L14.7 9.1L21.8 9.6L16.3 14.1L18.1 21L12 17.1L5.9 21L7.7 14.1L2.2 9.6L9.3 9.1Z" fill="#C9A227"/>
   </svg>`;
 
   // ---- Main grid ----
@@ -80,13 +78,13 @@
     { type: "image", thumb: "images/thumbs/marsh-island-la.jpg", full: "images/full/marsh-island-la.jpg", title: "Marsh Island, LA" }
   ];
 
-  // ---- Interactive Web Experiences ----
+  // ---- Interactive Maps & Apps ----
   // type "link" opens the URL in a new tab instead of the lightbox
   const interactiveApps = [
     { type: "link", thumb: "images/full/alaska-geoportal-web-app.jpg", url: "https://akgeoportal.alaska.gov/", title: "Alaska Geoportal | Web App" },
     { type: "link", thumb: "images/full/skyhub-explorer-web-app.jpg", url: "https://skyhub.alaska.gov/", title: "SkyHub Explorer | Web App" },
-    { type: "link", thumb: "images/full/how-permafrost-thaw-is-reshaping-alaska-storymap.jpg", url: "https://storymaps.arcgis.com/stories/7440f64b22654dde98961df9153bbe4d", title: "Permafrost Thaw | StoryMap" },
-    { type: "link", thumb: "images/full/alaska-food-policy-council-food-spoilage-dashboard.jpg", url: "https://maps.arcgis.com/apps/dashboards/b06e04e6196649ce9ab663a46526cb17", title: "Food Spoilage | Dashboard" }
+    { type: "link", thumb: "images/full/usda-census-of-agriculture-dashboard.jpg", url: "https://maps.arcgis.com/apps/dashboards/dd11415d593a4609bf93526df0155431", title: "USDA Census of Ag Dashboard" },
+    { type: "link", thumb: "images/full/alaska-food-policy-council-food-spoilage-dashboard.jpg", url: "https://maps.arcgis.com/apps/dashboards/b06e04e6196649ce9ab663a46526cb17", title: "Alaska Food Policy Council Food Spoilage Dashboard" }
   ];
 
   const lightbox = document.getElementById('lightbox');
