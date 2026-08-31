@@ -83,6 +83,7 @@ nav .wrap{ display:flex; justify-content:space-between; align-items:baseline; }
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .tile:hover .tile-title{ opacity:1; transform: translateY(0); }
+.grid-tight .tile-title{ white-space: nowrap; font-size: 16px; }
 
 .tile-award{
   position:absolute; left:14px; bottom:14px;
