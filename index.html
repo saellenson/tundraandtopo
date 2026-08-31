@@ -31,6 +31,7 @@
   <span class="lightbox-arrow prev" id="lightbox-prev">&#8249;</span>
   <span class="lightbox-arrow next" id="lightbox-next">&#8250;</span>
   <div class="lightbox-award" id="lightbox-award"></div>
+  <div class="lightbox-published" id="lightbox-published"></div>
   <div id="lightbox-media"></div>
   <div class="lightbox-lens" id="lightbox-lens"></div>
   <div class="lightbox-caption" id="lightbox-caption"></div>
@@ -41,6 +42,12 @@
   const AWARD_SVG = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
     <path d="M12 2.5L14.7 9.1L21.8 9.6L16.3 14.1L18.1 21L12 17.1L5.9 21L7.7 14.1L2.2 9.6L9.3 9.1Z" fill="#C9A227"/>
   </svg>`;
+
+  const STAR_BLUE_SVG = `<svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+    <path d="M12 2.5L14.7 9.1L21.8 9.6L16.3 14.1L18.1 21L12 17.1L5.9 21L7.7 14.1L2.2 9.6L9.3 9.1Z" fill="#7EC8E3"/>
+  </svg>`;
+
+  function escAttr(s){ return s.replace(/&/g, '&amp;'); }
 
   // ---- Main grid ----
   // type: "image" (default) or "video" (autoplays in grid, opens with controls)
@@ -61,12 +68,12 @@
 
     // ---- Remaining projects ----
     { type: "image", thumb: "images/thumbs/addressing-in-sand-point-ak.jpg", full: "images/full/addressing-in-sand-point-ak.jpg", title: "Addressing in Sand Point, AK", award: true },
-    { type: "image", thumb: "images/thumbs/jewish-movement-in-the-16th-century.jpg", full: "images/full/jewish-movement-in-the-16th-century.jpg", title: "Jewish Movement in the 16th Century" },
+    { type: "image", thumb: "images/thumbs/jewish-movement-in-the-16th-century.jpg", full: "images/full/jewish-movement-in-the-16th-century.jpg", title: "Jewish Movement in the 16th Century", published: { label: "Map series published in", source: "Sephardic Zionism", url: "https://www.amazon.com/dp/B0HD9HNKJ4?lv=shuf&bestFormat=true&social_share=cm_sw_r_ffobk_cp_ud_dp_FB1Y5F6YR8GA5YP8WTZS&channelId=704&ref_=cm_sw_r_ffobk_cp_ud_dp_FB1Y5F6YR8GA5YP8WTZS&plpRedirect=mhFallback" } },
     { type: "image", thumb: "images/thumbs/front-range-chugach-ak.jpg", full: "images/full/front-range-chugach-ak.jpg", title: "The Chugach Front Range" },
     { type: "image", thumb: "images/thumbs/sheridan-glacier-ak.jpg", full: "images/full/sheridan-glacier-ak.jpg", title: "Sheridan Glacier, AK" },
     { type: "image", thumb: "images/thumbs/anchorage-neighborhoods.jpg", full: "images/full/anchorage-neighborhoods.jpg", title: "Anchorage Neighborhoods" },
     { type: "image", thumb: "images/thumbs/alaska-coastal-communities.jpg", full: "images/full/alaska-coastal-communities.jpg", title: "Alaska Coastal Communities" },
-    { type: "image", thumb: "images/thumbs/aurora-forescast.jpg", full: "images/full/aurora-forescast.jpg", title: "Aurora Forecast" },
+    { type: "image", thumb: "images/thumbs/aurora-forescast.jpg", full: "images/full/aurora-forescast.jpg", title: "Aurora Forecast", published: { label: "Published on", source: "ASPRS Photogrammetric Engineering & Remote Sensing", url: "https://my.asprs.org/Common/Uploaded%20files/PERS/GISTT/GISTT%202024-11.pdf" } },
     { type: "image", thumb: "images/thumbs/donut-miss-this.jpg", full: "images/full/donut-miss-this.jpg", title: "Donut Miss This!" },
     { type: "image", thumb: "images/thumbs/calista-region-ak.jpg", full: "images/full/calista-region-ak.jpg", title: "Calista Region, AK" },
     { type: "image", thumb: "images/thumbs/map-projections.jpg", full: "images/full/map-projections.jpg", title: "Map Projections" },
@@ -93,6 +100,7 @@
   const lightboxPrev = document.getElementById('lightbox-prev');
   const lightboxNext = document.getElementById('lightbox-next');
   const lightboxAward = document.getElementById('lightbox-award');
+  const lightboxPublished = document.getElementById('lightbox-published');
   const lightboxLens = document.getElementById('lightbox-lens');
 
   const LENS_SIZE = 220;
@@ -135,6 +143,9 @@
     }
     lightboxCaption.textContent = p.title;
     lightboxAward.innerHTML = p.award ? `${AWARD_SVG}<span>Award Winner</span>` : '';
+    lightboxPublished.innerHTML = p.published
+      ? `<a href="${escAttr(p.published.url)}" target="_blank" rel="noopener">${STAR_BLUE_SVG}<span>${p.published.label} "<i>${p.published.source}</i>"</span></a>`
+      : '';
   }
 
   function openLightbox(index) {
@@ -165,13 +176,22 @@
         ? `<div class="tile-award">${AWARD_SVG}<span>Award Winner</span></div>`
         : '';
 
+      const publishedTag = p.published
+        ? `<a href="${escAttr(p.published.url)}" target="_blank" rel="noopener" class="tile-published">${STAR_BLUE_SVG}<span>${p.published.label} "<i>${p.published.source}</i>"</span></a>`
+        : '';
+
       tile.innerHTML = `
         ${mediaTag}
         <div class="tile-overlay">
           <div class="tile-title">${p.title}</div>
         </div>
         ${awardTag}
+        ${publishedTag}
       `;
+
+      if (p.published) {
+        tile.querySelector('.tile-published').addEventListener('click', (e) => e.stopPropagation());
+      }
 
       tile.addEventListener('click', () => {
         if (p.type === 'link') {
