@@ -104,6 +104,13 @@ nav .wrap{ display:flex; justify-content:space-between; align-items:baseline; }
   transition: opacity 0.3s ease, transform 0.3s ease;
 }
 .tile:hover .tile-published{ opacity:1; transform: translateY(0); }
+.tile-published.always-visible{
+  opacity: 1;
+  transform: none;
+  background: rgba(43,43,43,0.72);
+  padding: 8px 10px;
+  border-radius: 3px;
+}
 .tile-published svg{ width:20px; height:20px; flex-shrink:0; }
 .tile-published a{ text-decoration: underline; text-underline-offset: 2px; color: inherit; }
 
