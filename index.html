@@ -173,11 +173,11 @@
         : `<img src="${p.thumb}" alt="${p.title}" loading="lazy" class="${zoomClass}">`;
 
       const awardTag = p.award
-        ? `<div class="tile-award">${AWARD_SVG}<span>Award Winner</span></div>`
+        ? `<div class="tile-badge">${AWARD_SVG}</div>`
         : '';
 
       const publishedTag = p.published
-        ? `<div class="tile-published always-visible">${STAR_BLUE_SVG}<span>${p.published.label} <a href="${escAttr(p.published.url)}" target="_blank" rel="noopener"><i>${p.published.source}</i></a></span></div>`
+        ? `<div class="tile-badge">${STAR_BLUE_SVG}</div>`
         : '';
 
       tile.innerHTML = `
@@ -188,10 +188,6 @@
         ${awardTag}
         ${publishedTag}
       `;
-
-      if (p.published) {
-        tile.querySelector('.tile-published').addEventListener('click', (e) => e.stopPropagation());
-      }
 
       tile.addEventListener('click', () => {
         if (p.type === 'link') {
