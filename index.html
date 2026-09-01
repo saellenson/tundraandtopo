@@ -172,12 +172,16 @@
         ? `<video src="${p.thumb}" autoplay muted loop playsinline></video>`
         : `<img src="${p.thumb}" alt="${p.title}" loading="lazy" class="${zoomClass}">`;
 
-      const awardTag = p.award
-        ? `<div class="tile-badge">${AWARD_SVG}</div>`
-        : '';
-
-      const publishedTag = p.published
-        ? `<div class="tile-badge">${STAR_BLUE_SVG}</div>`
+      const badgeTag = p.award
+        ? `<div class="tile-badge-wrap">
+             <div class="tile-badge">${AWARD_SVG}</div>
+             <div class="tile-badge-label award-label">Award Winner</div>
+           </div>`
+        : p.published
+        ? `<div class="tile-badge-wrap">
+             <div class="tile-badge">${STAR_BLUE_SVG}</div>
+             <div class="tile-badge-label">${p.published.label} <a href="${escAttr(p.published.url)}" target="_blank" rel="noopener"><i>${p.published.source}</i></a></div>
+           </div>`
         : '';
 
       tile.innerHTML = `
@@ -185,9 +189,13 @@
         <div class="tile-overlay">
           <div class="tile-title">${p.title}</div>
         </div>
-        ${awardTag}
-        ${publishedTag}
+        ${badgeTag}
       `;
+
+      if (p.published) {
+        const link = tile.querySelector('.tile-badge-label a');
+        if (link) link.addEventListener('click', (e) => e.stopPropagation());
+      }
 
       tile.addEventListener('click', () => {
         if (p.type === 'link') {

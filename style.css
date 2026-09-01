@@ -85,14 +85,31 @@ nav .wrap{ display:flex; justify-content:space-between; align-items:baseline; }
 .tile:hover .tile-title{ opacity:1; transform: translateY(0); }
 .grid-tight .tile-title{ white-space: nowrap; font-size: 16px; }
 
+.tile-badge-wrap{
+  position:absolute; left:14px; bottom:14px; right:14px;
+  display:flex; align-items:flex-end; gap:10px;
+}
 .tile-badge{
-  position:absolute; left:14px; bottom:14px;
   display:flex; align-items:center; justify-content:center;
   width:34px; height:34px;
   border-radius:4px;
   background: rgba(0,0,0,0.55);
+  transition: background 0.25s ease;
+  flex-shrink:0;
 }
+.tile:hover .tile-badge{ background: transparent; }
 .tile-badge svg{ width:18px; height:18px; }
+.tile-badge-label{
+  color:#F6F1E7; font-size:13px; font-weight:500; letter-spacing:0.01em;
+  line-height:1.4;
+  white-space: normal;
+  opacity: 0;
+  transform: translateY(4px);
+  transition: opacity 0.25s ease, transform 0.25s ease;
+}
+.tile:hover .tile-badge-label{ opacity:1; transform: translateY(0); }
+.tile-badge-label.award-label{ font-weight:600; text-transform: uppercase; letter-spacing:0.04em; }
+.tile-badge-label a{ color:#F6F1E7; text-decoration: underline; text-underline-offset: 2px; }
 
 @media (max-width: 980px){
   .grid{ grid-template-columns: repeat(2, 1fr); }
