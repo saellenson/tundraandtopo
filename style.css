@@ -88,8 +88,11 @@ nav .wrap{ display:flex; justify-content:space-between; align-items:baseline; }
 .tile-badge{
   position:absolute; left:14px; bottom:14px;
   display:flex; align-items:center; justify-content:center;
+  width:34px; height:34px;
+  border-radius:4px;
+  background: rgba(0,0,0,0.55);
 }
-.tile-badge svg{ width:22px; height:22px; filter: drop-shadow(0 1px 3px rgba(0,0,0,0.75)); }
+.tile-badge svg{ width:18px; height:18px; }
 
 @media (max-width: 980px){
   .grid{ grid-template-columns: repeat(2, 1fr); }
